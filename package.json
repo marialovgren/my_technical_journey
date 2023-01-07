@@ -7,15 +7,19 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "watch": "tailwindcss -i ./src/index.css -o ./src/main.css --watch",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "setup": "node ./contentful/setup.js"
   },
   "dependencies": {
-    "axios": "^1.2.1",
+    "axios": "^1.2.2",
     "classnames": "^2.3.2",
+    "contentful": "^9.2.14",
+    "dotenv": "^16.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-query": "^3.39.2",
     "react-router-dom": "^6.6.1",
+    "react-scripts": "^5.0.1",
     "tailwindcss": "^3.2.4"
   },
   "devDependencies": {
