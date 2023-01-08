@@ -11,6 +11,8 @@
     "setup": "node ./contentful/setup.js"
   },
   "dependencies": {
+    "@contentful/rich-text-react-renderer": "^15.16.2",
+    "@contentful/rich-text-types": "^16.0.2",
     "axios": "^1.2.2",
     "classnames": "^2.3.2",
     "contentful": "^9.2.14",

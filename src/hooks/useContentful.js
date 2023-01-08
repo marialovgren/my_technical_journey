@@ -5,19 +5,19 @@
 import { useState, useEffect } from "react"
 
 const SPACE_ID = import.meta.env.VITE_SPACE_ID
-const DELIVERY_TOKEN = import.meta.env.VITE_DELIVERY_TOKEN
+const CDA_TOKEN = import.meta.env.VITE_CDA_TOKEN
 
 const useContentful = (query) => {
     const [data, setData] = useState(null)
     const [errors, setErrors] = useState(null)
 
     useEffect(() => {
-        window.fetch(`https://graphql.contentful.com/content/v1/spaces/${SPACE_ID}?access_token=${DELIVERY_TOKEN}`
+        window.fetch(`https://graphql.contentful.com/content/v1/spaces/${SPACE_ID}?access_token=${CDA_TOKEN}`
         ,{
             method: "POST", 
             headers: {
                 "Content-Type": "application/json",
-                Authorization: `Bearer ${DELIVERY_TOKEN}`
+                Authorization: `Bearer ${CDA_TOKEN}`
             },
             body: JSON.stringify({ query }),
         }
