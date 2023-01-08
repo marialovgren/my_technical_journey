@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useState } from 'react'
 import { client } from '../client'
+import Loader from './Loader/Loader'
 
 const Knowledge = () => {
     const [isLoading, setIsLoading] = useState(false)
@@ -38,7 +39,10 @@ const Knowledge = () => {
         getKnowledgeIcons()
     }, [getKnowledgeIcons])
 
-    console.log(knowledgeIcons)
+    if (isLoading) {
+        return <Loader />
+    }
+
     return (
         <div>
             {knowledgeIcons.map((item) => {
