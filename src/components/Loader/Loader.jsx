@@ -2,8 +2,10 @@ import FadeLoader from "react-spinners/FadeLoader"
 
 const Loader = () => {
     return (
-        <div id="initial-loader">
-			<FadeLoader color="orange" size={50} />
+        <div className="flex items-center justify-center w-full h-full">
+            <div>
+                <FadeLoader color="orange" size={50} />
+            </div>
 		</div>
     )
 }

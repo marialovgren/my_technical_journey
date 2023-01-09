@@ -1,11 +1,15 @@
-import Knowledge from '../components/Knowledge'
+// import Knowledge from '../components/Knowledge'
+
+import About from "../components/About/About"
+
 
 const HomePage = () => {
 
     return (
         <div>
             HomePage
-            <Knowledge />
+            <About />
+            {/* <Knowledge /> */}
            
         </div>
     )
