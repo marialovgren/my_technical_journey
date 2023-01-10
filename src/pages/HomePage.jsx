@@ -1,6 +1,6 @@
 // import Knowledge from '../components/Knowledge'
 
-import About from "../components/About/About"
+// import About from "../components/About/About"
 
 
 const HomePage = () => {
@@ -8,7 +8,7 @@ const HomePage = () => {
     return (
         <div>
             HomePage
-            <About />
+            {/* <About /> */}
             {/* <Knowledge /> */}
            
         </div>

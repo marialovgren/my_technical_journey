@@ -31,3 +31,16 @@ export const cleanUpKnowledgeIcons = (rawData) => {
     })
     return cleanKnowledges
 }
+
+/** Navigation **/ 
+export const cleanUpNavLinks = (rawData) => {
+    const cleanNavlinks = rawData.map((link) => {
+        const { sys, fields } = link
+        const {id} = sys
+        const navLinkTitle = fields.title
+        const navLinkUrl = fields.url 
+        const updatedNavLink = { id, navLinkTitle, navLinkUrl } // New object that only holds the data that I´m interested in to use
+        return updatedNavLink
+    })
+    return cleanNavlinks
+}

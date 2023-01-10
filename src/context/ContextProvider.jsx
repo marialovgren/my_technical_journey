@@ -1,6 +1,6 @@
 import { createContext, useCallback, useEffect, useState, } from "react";
 import { client } from "./client";
-import { cleanUpAbout, cleanUpKnowledgeIcons } from "./helpers";
+import { cleanUpAbout, cleanUpKnowledgeIcons, cleanUpNavLinks } from "./helpers";
 
 export const Context = createContext({})
 
@@ -64,12 +64,44 @@ const ContextProvider = ({ children }) => {
         getKnowledgeIcons()
     }, [getKnowledgeIcons])
 
+    /** Navigation **/ 
+    const [isNavLinksLoading, setIsNavLinksLoading] = useState(false)
+    const [navLinks, setNavLinks] = useState([])
+
+    const saveNavLinksData = useCallback((rawData) => {
+        const cleanNavLinksData = cleanUpNavLinks(rawData)
+        setNavLinks(cleanNavLinksData)
+    }, [])
+
+    const getNavLinks = useCallback(async () => {
+        setIsNavLinksLoading(true)
+        try {
+            const response = await client.getEntries({ content_type: 'navigation' })
+            const responseData = response.items
+            if (responseData) {
+                saveNavLinksData(responseData)
+            } else {
+                setNavLinks([])
+            }
+            setIsNavLinksLoading(false)
+        } catch (err) {
+            console.log(err)
+            setIsNavLinksLoading(false)
+        }
+    }, [saveNavLinksData])
+
+    useEffect(() => {
+        getNavLinks()
+    }, [getNavLinks])
+
 
     const contextValues = {
         about, 
         isAboutLoading, 
         knowledgeIcons, 
-        isKnowledgeLoading
+        isKnowledgeLoading,
+        navLinks,
+        isNavLinksLoading
     }
 
     return (
