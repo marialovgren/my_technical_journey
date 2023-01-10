@@ -1,6 +1,6 @@
 import { createContext, useCallback, useEffect, useState, } from "react";
 import { client } from "./client";
-import { cleanUpAbout, cleanUpKnowledgeIcons, cleanUpNavLinks, cleanUpLogo } from "./helpers";
+import { cleanUpAbout, cleanUpKnowledgeIcons, cleanUpNavLinks, cleanUpLogo, cleanUpHero, getHTMLData } from "./helpers";
 
 export const Context = createContext({})
 
@@ -108,7 +108,6 @@ const ContextProvider = ({ children }) => {
         setIsLogoLoading(true)
         try {
             const response = await client.getEntry('5imA0DXdHfNoFRSJzwqsK4')
-            console.log("logo", response)
             if (response) {
                 saveLogoData(response)
             } else {
@@ -125,6 +124,35 @@ const ContextProvider = ({ children }) => {
         getLogo()
     }, [getLogo])
 
+    /** Hero **/
+    const [hero, setHero] = useState({})
+    const [isHeroLoading, setIsHeroLoading] = useState(false)
+
+    const saveHeroData = useCallback((rawData) => {
+        const cleanHeroData = cleanUpHero(rawData)
+        setHero(cleanHeroData)
+    }, [])
+
+    const getHero = useCallback(async () => {
+        setIsHeroLoading(true)
+        try {
+            const response = await client.getEntry('6zECUglENTjSGovBnY4eHQ')
+            if (response) {
+                saveHeroData(response)
+            } else {
+                setHero({})
+            }
+            setIsHeroLoading(false)
+        } catch (err) {
+            console.log(err)
+            setIsHeroLoading(false)
+        }
+    }, [saveHeroData])
+
+    useEffect(() => {
+        getHero()
+    }, [getHero])
+
     const contextValues = {
         about, 
         isAboutLoading, 
@@ -133,7 +161,9 @@ const ContextProvider = ({ children }) => {
         navLinks,
         isNavLinksLoading,
         logo,
-        isLogoLoading
+        isLogoLoading,
+        hero,
+        isHeroLoading
     }
 
     return (

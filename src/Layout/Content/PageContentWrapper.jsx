@@ -1,7 +1,7 @@
 
 const PageContentWrapper = ({children}) => {
     return (
-        <div className="flex flex-col mt-10 mx-auto w-11/12 mb-10">
+        <div className="flex flex-col mx-auto">
             {children}
         </div>
     )
