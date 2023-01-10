@@ -1,6 +1,6 @@
 import { createContext, useCallback, useEffect, useState, } from "react";
 import { client } from "./client";
-import { cleanUpAbout, cleanUpKnowledgeIcons, cleanUpNavLinks } from "./helpers";
+import { cleanUpAbout, cleanUpKnowledgeIcons, cleanUpNavLinks, cleanUpLogo } from "./helpers";
 
 export const Context = createContext({})
 
@@ -17,7 +17,7 @@ const ContextProvider = ({ children }) => {
     const getAbout = useCallback(async () => {
         setIsAboutLoading(true)
         try {
-            const response = await client.getEntry({ content_type: '5dLZMMqttuAABZ3URyjcc2' })
+            const response = await client.getEntry( '5dLZMMqttuAABZ3URyjcc2')
             if (response) {
                 saveAboutData(response)
             } else {
@@ -95,13 +95,45 @@ const ContextProvider = ({ children }) => {
     }, [getNavLinks])
 
 
+    /** Logo **/
+    const [logo, setLogo] = useState({})
+    const [isLogoLoading, setIsLogoLoading] = useState(false)
+
+    const saveLogoData = useCallback((rawData) => {
+        const cleanLogoData = cleanUpLogo(rawData)
+        setLogo(cleanLogoData)
+    }, [])
+
+    const getLogo = useCallback(async () => {
+        setIsLogoLoading(true)
+        try {
+            const response = await client.getEntry('5imA0DXdHfNoFRSJzwqsK4')
+            console.log("logo", response)
+            if (response) {
+                saveLogoData(response)
+            } else {
+                setLogo({})
+            }
+            setIsLogoLoading(false)
+        } catch (err) {
+            console.log(err)
+            setIsLogoLoading(false)
+        }
+    }, [saveLogoData])
+
+    useEffect(() => {
+        getLogo()
+    }, [getLogo])
+
     const contextValues = {
         about, 
         isAboutLoading, 
         knowledgeIcons, 
         isKnowledgeLoading,
         navLinks,
-        isNavLinksLoading
+        isNavLinksLoading,
+        logo,
+        isLogoLoading
     }
 
     return (

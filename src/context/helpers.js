@@ -44,3 +44,12 @@ export const cleanUpNavLinks = (rawData) => {
     })
     return cleanNavlinks
 }
+
+/** Logo **/
+export const cleanUpLogo = (rawData) => {
+    const { sys, fields } = rawData
+    const {id} = sys
+    const img = fields.logo.fields.file.url 
+    let cleanLogo = { id, img } // New object that only holds the data that I´m interested in to use
+    return cleanLogo
+}

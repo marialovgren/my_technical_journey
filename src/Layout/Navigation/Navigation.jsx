@@ -7,18 +7,19 @@ import Loader from '../../components/Loader/Loader'
 
 const Navigation = () => {
     const [open, setOpen] = useState(false)
-    const { navLinks, isNavLinksLoading } = useContext(Context)
+    const { navLinks, isNavLinksLoading, logo, isLogoLoading } = useContext(Context)
 
-    if (isNavLinksLoading) {
+    if (isNavLinksLoading || isLogoLoading) {
         return <Loader />
     }
+
     return (  
         <nav className="w-full bg-lightBeige shadow-md shadow-lightBeige">
             <div className="justify-between px-3 mx-2 md:items-center md:flex md:px-8"> 
                 <div>
-                    <div className="flex items-center justify-between py-3 md:py-5 md:block">
+                    <div className="flex items-center justify-between py-2 md:py-4 md:block">
                         <div>
-                            <img src="#" className="h-9" />
+                            <img src={logo.img} className="h-14" />
                         </div>
 
                         <div className="md:hidden ">
