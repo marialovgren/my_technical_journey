@@ -1,16 +1,14 @@
+/** Components **/
 // import Knowledge from '../components/Knowledge'
-
-// import About from "../components/About/About"
-
+import PageContentWrapper from "../Layout/Content/PageContentWrapper"
 
 const HomePage = () => {
 
     return (
         <div>
-            HomePage
-            {/* <About /> */}
-            {/* <Knowledge /> */}
-           
+            <PageContentWrapper>
+                {/* <Knowledge /> */}
+            </PageContentWrapper>
         </div>
     )
 }
