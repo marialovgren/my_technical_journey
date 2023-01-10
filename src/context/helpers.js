@@ -34,7 +34,7 @@ export const cleanUpKnowledgeIcons = (rawData) => {
 
 /** Navigation **/ 
 export const cleanUpNavLinks = (rawData) => {
-    const cleanNavlinks = rawData.map((link) => {
+    const cleanNavLinks = rawData.map((link) => {
         const { sys, fields } = link
         const {id} = sys
         const navLinkTitle = fields.title
@@ -42,7 +42,7 @@ export const cleanUpNavLinks = (rawData) => {
         const updatedNavLink = { id, navLinkTitle, navLinkUrl } // New object that only holds the data that I´m interested in to use
         return updatedNavLink
     })
-    return cleanNavlinks
+    return cleanNavLinks
 }
 
 /** Logo **/
@@ -63,4 +63,17 @@ export const cleanUpHero = (rawData) => {
     const heroImage = fields.image.fields.file.url 
     let cleanHero = { id, heroTitle, heroSubTitle, heroImage } // New object that only holds the data that I´m interested in to use
     return cleanHero
+}
+
+/** Footer-links **/
+export const cleanUpFooterLinks = (rawData) => {
+    const cleanFooterlinks = rawData.map((link) => {
+        const { sys, fields } = link
+        const {id} = sys
+        const footerLinkIcon = fields.icon
+        const footerLinkUrl = fields.url 
+        const updatedFooterLink = { id, footerLinkIcon, footerLinkUrl } // New object that only holds the data that I´m interested in to use
+        return updatedFooterLink
+    })
+    return cleanFooterlinks
 }

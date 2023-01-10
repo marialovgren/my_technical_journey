@@ -8,6 +8,7 @@ import ProjectsPage from './pages/ProjectsPage'
 
 /** Components **/
 import Navigation from './Layout/Navigation/Navigation'
+import Footer from './Layout/Footer/Footer'
 
 function App() {
 	return (
@@ -20,6 +21,7 @@ function App() {
 						<Route path="/about" end element={<AboutPage />} />
 						<Route path="/projects" end element={<ProjectsPage />} />
 					</Routes>
+					<Footer />
 				</div>
 			</ContextProvider>
 		</BrowserRouter>

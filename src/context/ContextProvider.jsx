@@ -1,6 +1,6 @@
 import { createContext, useCallback, useEffect, useState, } from "react";
 import { client } from "./client";
-import { cleanUpAbout, cleanUpKnowledgeIcons, cleanUpNavLinks, cleanUpLogo, cleanUpHero, getHTMLData } from "./helpers";
+import { cleanUpAbout, cleanUpKnowledgeIcons, cleanUpNavLinks, cleanUpLogo, cleanUpHero, getHTMLData, cleanUpFooterLinks } from "./helpers";
 
 export const Context = createContext({})
 
@@ -94,7 +94,6 @@ const ContextProvider = ({ children }) => {
         getNavLinks()
     }, [getNavLinks])
 
-
     /** Logo **/
     const [logo, setLogo] = useState({})
     const [isLogoLoading, setIsLogoLoading] = useState(false)
@@ -153,6 +152,36 @@ const ContextProvider = ({ children }) => {
         getHero()
     }, [getHero])
 
+    /** Footer-links **/ 
+    const [isFooterLinksLoading, setIsFooterLinksLoading] = useState(false)
+    const [footerLinks, setFooterLinks] = useState([])
+
+    const saveFooterLinksData = useCallback((rawData) => {
+        const cleanFooterLinksData = cleanUpFooterLinks(rawData)
+        setFooterLinks(cleanFooterLinksData)
+    }, [])
+
+    const getFooterLinks = useCallback(async () => {
+        setIsFooterLinksLoading(true)
+        try {
+            const response = await client.getEntries({ content_type: 'footerLinks' })
+            const responseData = response.items
+            if (responseData) {
+                saveFooterLinksData(responseData)
+            } else {
+                setFooterLinks([])
+            }
+            setIsFooterLinksLoading(false)
+        } catch (err) {
+            console.log(err)
+            setIsFooterLinksLoading(false)
+        }
+    }, [saveFooterLinksData])
+
+    useEffect(() => {
+        getFooterLinks()
+    }, [getFooterLinks])
+
     const contextValues = {
         about, 
         isAboutLoading, 
@@ -163,7 +192,9 @@ const ContextProvider = ({ children }) => {
         logo,
         isLogoLoading,
         hero,
-        isHeroLoading
+        isHeroLoading,
+        footerLinks,
+        isFooterLinksLoading
     }
 
     return (
