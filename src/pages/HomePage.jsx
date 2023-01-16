@@ -1,5 +1,5 @@
 /** Components **/
-// import Knowledge from '../components/Knowledge'
+import Skills from '../components/Skills/Skills'
 import Hero from "../components/Hero/Hero"
 import PageContentWrapper from "../Layout/Content/PageContentWrapper"
 
@@ -9,7 +9,7 @@ const HomePage = () => {
         <div className="h-full w-full">
             <PageContentWrapper>
                 <Hero />
-                {/* <Knowledge /> */}
+                <Skills />
             </PageContentWrapper>
         </div>
     )

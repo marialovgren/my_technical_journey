@@ -1,6 +1,6 @@
 import { createContext, useCallback, useEffect, useState, } from "react";
 import { client } from "./client";
-import { cleanUpAbout, cleanUpKnowledgeIcons, cleanUpNavLinks, cleanUpLogo, cleanUpHero, getHTMLData, cleanUpFooterLinks } from "./helpers";
+import { cleanUpAbout, cleanUpSkillsIcons, cleanUpNavLinks, cleanUpLogo, cleanUpHero, getHTMLData, cleanUpFooterLinks } from "./helpers";
 
 export const Context = createContext({})
 
@@ -34,35 +34,35 @@ const ContextProvider = ({ children }) => {
         getAbout()
     }, [getAbout])
 
-    /** Knowledge-section **/ 
-    const [isKnowledgeLoading, setIsKnowledgeLoading] = useState(false)
-    const [knowledgeIcons, setKnowledgeIcons] = useState([])
+    /** Skills-icons **/ 
+    const [isSkillsLoading, setIsSkillsLoading] = useState(false)
+    const [skillsIcons, setSkillsIcons] = useState([])
 
-    const saveKnowledgeData = useCallback((rawData) => {
-        const cleanKnowledgeData = cleanUpKnowledgeIcons(rawData)
-        setKnowledgeIcons(cleanKnowledgeData)
+    const saveSkillsData = useCallback((rawData) => {
+        const cleanSkillsData = cleanUpSkillsIcons(rawData)
+        setSkillsIcons(cleanSkillsData)
     }, [])
 
-    const getKnowledgeIcons = useCallback(async () => {
-        setIsKnowledgeLoading(true)
+    const getSkillsIcons = useCallback(async () => {
+        setIsSkillsLoading(true)
         try {
             const response = await client.getEntries({ content_type: 'knowledge' })
             const responseData = response.items
             if (responseData) {
-                saveKnowledgeData(responseData)
+                saveSkillsData(responseData)
             } else {
-                setKnowledgeIcons([])
+                setSkillsIcons([])
             }
-            setIsKnowledgeLoading(false)
+            setIsSkillsLoading(false)
         } catch (err) {
             console.log(err)
-            setIsKnowledgeLoading(false)
+            setIsSkillsLoading(false)
         }
-    }, [saveKnowledgeData])
+    }, [saveSkillsData])
 
     useEffect(() => {
-        getKnowledgeIcons()
-    }, [getKnowledgeIcons])
+        getSkillsIcons()
+    }, [getSkillsIcons])
 
     /** Navigation **/ 
     const [isNavLinksLoading, setIsNavLinksLoading] = useState(false)
@@ -185,8 +185,8 @@ const ContextProvider = ({ children }) => {
     const contextValues = {
         about, 
         isAboutLoading, 
-        knowledgeIcons, 
-        isKnowledgeLoading,
+        skillsIcons, 
+        isSkillsLoading,
         navLinks,
         isNavLinksLoading,
         logo,

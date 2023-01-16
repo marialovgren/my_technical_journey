@@ -19,17 +19,17 @@ export const cleanUpAbout = (rawData) => {
     return cleanAbout
 }
 
-/** Knowledge-section **/ 
-export const cleanUpKnowledgeIcons = (rawData) => {
-    const cleanKnowledges = rawData.map((icon) => {
+/** Skills-icons **/ 
+export const cleanUpSkillsIcons = (rawData) => {
+    const cleanSkills = rawData.map((icon) => {
         const { sys, fields } = icon
         const {id} = sys
-        const knowledgeType = fields.type
-        const knowledgeImg = fields.image.fields.file.url 
-        const updatedKnowledgeicon = { id, knowledgeType, knowledgeImg } // New object that only holds the data that I´m interested in to use
-        return updatedKnowledgeicon
+        const skillsType = fields.type
+        const skillsImg = fields.image.fields.file.url 
+        const updatedSkillsIcon = { id, skillsType, skillsImg } // New object that only holds the data that I´m interested in to use
+        return updatedSkillsIcon
     })
-    return cleanKnowledges
+    return cleanSkills
 }
 
 /** Navigation **/ 
