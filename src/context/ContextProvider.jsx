@@ -1,6 +1,6 @@
 import { createContext, useCallback, useEffect, useState, } from "react";
 import { client } from "./client";
-import { cleanUpAbout, cleanUpSkillsIcons, cleanUpNavLinks, cleanUpLogo, cleanUpHero, getHTMLData, cleanUpFooterLinks } from "./helpers";
+import { cleanUpAbout, cleanUpSkillsIcons, cleanUpNavLinks, cleanUpLogo, cleanUpHero, cleanUpFooterLinks, cleanUpProjectCards } from "./helpers";
 
 export const Context = createContext({})
 
@@ -182,6 +182,36 @@ const ContextProvider = ({ children }) => {
         getFooterLinks()
     }, [getFooterLinks])
 
+    /** Project-cards **/ 
+    const [isProjectCardsLoading, setIsProjectCardsLoading] = useState(false)
+    const [projectCards, setProjectCards] = useState([])
+    
+    const saveProjectCardsData = useCallback((rawData) => {
+        const cleanProjectCardsData = cleanUpProjectCards(rawData)
+        setProjectCards(cleanProjectCardsData)
+    }, [])
+    
+    const getProjectCards = useCallback(async () => {
+        setIsProjectCardsLoading(true)
+        try {
+            const response = await client.getEntries({ content_type: 'projectCards' })
+            const responseData = response.items
+            if (responseData) {
+                saveProjectCardsData(responseData)
+            } else {
+                setProjectCards([])
+            }
+            setIsProjectCardsLoading(false)
+        } catch (err) {
+            console.log(err)
+            setIsProjectCardsLoading(false)
+        }
+    }, [saveProjectCardsData])
+    
+    useEffect(() => {
+        getProjectCards()
+    }, [getProjectCards])
+
     const contextValues = {
         about, 
         isAboutLoading, 
@@ -194,7 +224,9 @@ const ContextProvider = ({ children }) => {
         hero,
         isHeroLoading,
         footerLinks,
-        isFooterLinksLoading
+        isFooterLinksLoading,
+        projectCards,
+        isProjectCardsLoading
     }
 
     return (

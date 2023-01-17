@@ -77,3 +77,20 @@ export const cleanUpFooterLinks = (rawData) => {
     })
     return cleanFooterlinks
 }
+
+/** Project-cards **/
+export const cleanUpProjectCards = (rawData) => {
+    const cleanProjectsCards = rawData.map((project) => {
+        const { sys, fields } = project
+        const {id} = sys
+        const projectTitle = fields.title
+        const projectImg = fields.image.fields.file.url 
+        const projectDescription = getHTMLData(fields.description) 
+        const pageUrl = fields.pageUrl
+        const repoUrl = fields.repoUrl
+        const projectTags = fields.tags
+        const updatedProjectCard = { id, projectTitle, projectImg, projectDescription, pageUrl, repoUrl, projectTags } // New object that only holds the data that I´m interested in to use
+        return updatedProjectCard
+    })
+    return cleanProjectsCards
+}

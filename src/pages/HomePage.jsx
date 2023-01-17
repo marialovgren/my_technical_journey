@@ -1,7 +1,8 @@
 /** Components **/
-import Skills from '../components/Skills/Skills'
 import Hero from "../components/Hero/Hero"
+import Projects from "../components/Projects/Projects"
 import PageContentWrapper from "../Layout/Content/PageContentWrapper"
+
 
 const HomePage = () => {
 
@@ -9,7 +10,7 @@ const HomePage = () => {
         <div className="h-full w-full">
             <PageContentWrapper>
                 <Hero />
-                <Skills />
+                <Projects />
             </PageContentWrapper>
         </div>
     )
