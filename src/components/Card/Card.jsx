@@ -3,8 +3,8 @@ const Card = ({image, tags, title, description, btnOne, btnTwo, btnOneTitle, btn
     
     return (
         <div key={id} className="bg-white py-4 px-6 border-b-4 border-lightBeige">
-            <div>
-                <img className="drop-shadow-md mb-4" src={image} alt=""/>
+            <div className="w-full">
+                <img className="drop-shadow-md mb-4 w-full" src={image} alt=""/>
             </div>
                         
             <div className="flex flex-row space-x-4">

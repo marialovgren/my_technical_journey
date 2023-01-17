@@ -11,7 +11,7 @@ const Projects = () => {
     }
 
     return (
-        <div className="flex flex-col w-full justify-center bg-lightOrange">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full justify-center ">
             {projectCards.map(project => {
                 const {id, projectTitle, projectImg, projectDescription, pageUrl, repoUrl, projectTags} = project
                 return <Card 
