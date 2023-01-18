@@ -2,6 +2,7 @@ import Card from "../Card/Card"
 import { useContext } from 'react'
 import { Context } from '../../context/ContextProvider'
 import Loader from '../Loader/Loader'
+import Grid from "../Grid/Grid"
 
 const Projects = () => {
     const { projectCards, isProjectCardsLoading } = useContext(Context)
@@ -11,7 +12,13 @@ const Projects = () => {
     }
 
     return (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full justify-center ">
+        <Grid
+            sm="1"
+            md="2"
+            lg="3"
+            width="full"
+            justify="center"
+        >
             {projectCards.map(project => {
                 const {id, projectTitle, projectImg, projectDescription, pageUrl, repoUrl, projectTags} = project
                 return <Card 
@@ -26,7 +33,7 @@ const Projects = () => {
                     key={id}
                 /> 
             })}
-        </div>
+        </Grid>
     )
 }
 
