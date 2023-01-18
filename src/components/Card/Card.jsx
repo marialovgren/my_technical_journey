@@ -1,3 +1,4 @@
+import Button from "../Button/Button"
 
 const Card = ({image, tags, title, description, btnOne, btnTwo, btnOneTitle, btnTwoTitle, id}) => {
     
@@ -22,20 +23,22 @@ const Card = ({image, tags, title, description, btnOne, btnTwo, btnOneTitle, btn
             <div className="py-4">
                 <h5 className="text-blue text-xl font-medium mb-2">{title}</h5>
                 <div className="text-blue text-sm mb-4" dangerouslySetInnerHTML={{ __html: description }} /> 
-
+  
                 <div className="flex flex-row justify-around">
                     {btnOne && (
                         <a href={btnOne}>
-                            <button type="button" className=" inline-block px-6 py-2.5 bg-blue text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">
-                                {btnOneTitle}
-                            </button>
+                            <Button 
+                                label={btnOneTitle}
+                                buttonType="blue"
+                            />
                         </a>
                     )}
                     {btnTwo && (
                         <a href={btnTwo}>
-                            <button type="button" className=" inline-block px-6 py-2.5 bg-blue text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">
-                                {btnTwoTitle}
-                            </button>
+                            <Button 
+                                label={btnTwoTitle}
+                                buttonType="blue"
+                            />
                         </a>
                     )}
                 </div>
