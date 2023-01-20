@@ -1,9 +1,9 @@
 import Button from "../Button/Button"
 
-const Card = ({image, tags, title, description, btnOne, btnTwo, btnOneTitle, btnTwoTitle, id}) => {
+const Card = ({image, tags, title, description, btnOne, btnTwo, btnOneTitle, btnTwoTitle, borderColor, id}) => {
     
     return (
-        <div key={id} className="bg-white py-4 px-6 border-b-4 border-lightBeige">
+        <div key={id} className={`py-4 px-6 border-b-4 border-${borderColor}`}>
             <div className="w-full">
                 <img className="drop-shadow-md mb-4 w-full" src={image} alt=""/>
             </div>
