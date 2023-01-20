@@ -13,7 +13,7 @@ const Projects = ({projectCards, isProjectCardsLoading, bgColor, borderColor, ta
 
     return (
         <div className={`bg-${bgColor}`}>
-            <div className="flex justify-center my-4">
+            <div className="flex justify-center my-6 md:my-8">
                 <Heading
                     size="1"
                     headingColor="blue"
