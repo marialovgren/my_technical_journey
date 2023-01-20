@@ -3,6 +3,7 @@ import { Context } from '../../context/ContextProvider'
 
 /** Components **/
 import Loader from '../../components/Loader/Loader'
+import Heading from '../../components/Heading/Heading'
 
 const Footer = () => {
 	const { footerLinks, isFooterLinksLoading } = useContext(Context)
@@ -14,8 +15,13 @@ const Footer = () => {
     return (
       <div className="bg-blue w-full p-10 text-lightBeige">
 		  <div className="flex justify-center">
-			  <h2 className="text-5xl font-normal">CONTACT <span className="font-semibold">ME</span></h2>
-		  </div>
+                <Heading
+                    size="1"
+                    headingColor="lightBeige"
+                    thin="CONTACT"
+                    bold="ME"
+                />
+            </div>
 
 		  <div>
 			  <ul className="flex flex-row justify-center mt-6">
@@ -24,7 +30,7 @@ const Footer = () => {
 					return (
 						<li
 							key={id}
-							className="mx-4 text-4xl md:mx-20"
+							className="mx-4 text-5xl md:mx-20"
 						>
 							<a href={footerLinkUrl}>
 								<ion-icon name={footerLinkIcon}></ion-icon> 
