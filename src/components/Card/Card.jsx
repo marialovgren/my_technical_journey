@@ -3,7 +3,7 @@ import Button from "../Button/Button"
 const Card = ({image, tags, title, description, btnOne, btnTwo, btnOneTitle, btnTwoTitle, borderColor, tagColor, id}) => {
     
     return (
-        <div key={id} className={`py-4 px-6 border-b-4 border-${borderColor}`}>
+        <div key={id} className={`py-4 px-6 border-b-4 border-${borderColor} last-of-type:border-none`}>
             <div className="w-full">
                 <img className="drop-shadow-md mb-4 w-full" src={image} alt=""/>
             </div>

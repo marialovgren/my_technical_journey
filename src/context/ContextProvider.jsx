@@ -1,6 +1,6 @@
 import { createContext, useCallback, useEffect, useState, } from "react";
 import { client } from "./client";
-import { cleanUpAbout, cleanUpSkillsIcons, cleanUpNavLinks, cleanUpLogo, cleanUpHero, cleanUpFooterLinks, cleanUpProjectCards } from "./helpers";
+import { cleanUpAbout, cleanUpSkillsIcons, cleanUpNavLinks, cleanUpLogo, cleanUpHero, cleanUpFooterLinks, cleanUpProjectCards, cleanUpIntro } from "./helpers";
 
 export const Context = createContext({})
 
@@ -212,6 +212,35 @@ const ContextProvider = ({ children }) => {
         getProjectCards()
     }, [getProjectCards])
 
+    /** Intro-section **/ 
+    const [intro, setIntro] = useState({})
+    const [isIntroLoading, setIsIntroLoading] = useState(false)
+
+    const saveIntroData = useCallback((rawData) => {
+        const cleanIntroData = cleanUpIntro(rawData)
+        setIntro(cleanIntroData)
+    }, [])
+
+    const getIntro = useCallback(async () => {
+        setIsIntroLoading(true)
+        try {
+            const response = await client.getEntry( 'PReUKj88zFI5thhnnvCcU')
+            if (response) {
+                saveIntroData(response)
+            } else {
+                setIntro({})
+            }
+            setIsIntroLoading(false)
+        } catch (err) {
+            console.log(err)
+            setIsIntroLoading(false)
+        }
+    }, [saveIntroData])
+
+    useEffect(() => {
+        getIntro()
+    }, [getIntro])
+
     const contextValues = {
         about, 
         isAboutLoading, 
@@ -226,7 +255,9 @@ const ContextProvider = ({ children }) => {
         footerLinks,
         isFooterLinksLoading,
         projectCards,
-        isProjectCardsLoading
+        isProjectCardsLoading,
+        intro,
+        isIntroLoading
     }
 
     return (

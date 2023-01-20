@@ -1,15 +1,14 @@
 import {marked} from 'marked'
 import DOMPurify from 'dompurify'
 
-/** About-section **/ 
-
-// this function formats the data that is from about content so I can style how I want the text to be formatted from Contentful
+// this function formats the data that is added as longer texts so that I can style how I want the text to be formatted from Contentful
 export const getHTMLData = (rawData) => {
     const htmlString = marked(rawData)
     const sanitizedHTMLString = DOMPurify.sanitize(htmlString)
     return sanitizedHTMLString
 }
 
+/** About-section **/ 
 export const cleanUpAbout = (rawData) => {
     const { sys, fields } = rawData
     const {id} = sys
@@ -93,4 +92,14 @@ export const cleanUpProjectCards = (rawData) => {
         return updatedProjectCard
     })
     return cleanProjectsCards
+}
+
+/** Intro-section **/ 
+export const cleanUpIntro = (rawData) => {
+    const { sys, fields } = rawData
+    const {id} = sys
+    const introTags = fields.tags
+    const introDescription = fields.description
+    let cleanIntro = { id, introTags, introDescription } // New object that only holds the data that I´m interested in to use
+    return cleanIntro
 }

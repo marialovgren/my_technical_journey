@@ -1,6 +1,6 @@
 import classNames from 'classnames'
 
-const Button = ({ buttonType, label, size = "sm", type }) => {
+const Button = ({ buttonType, label, size = "sm", type, handleClick }) => {
     const blue = buttonType === "blue"
     const orange = buttonType === "orange"
     const lightOrange = buttonType === "lightOrange"
@@ -9,7 +9,7 @@ const Button = ({ buttonType, label, size = "sm", type }) => {
     return (
         <button 
             type={type}
-            className={classNames("font-normal hover:font-bold py-2 border-2 px-6 transition ease-out duration-300 rounded-lg", {
+            className={classNames("font-normal text-base hover:font-bold py-4 border-2 px-6 transition ease-out duration-300 rounded-lg", {
                 'bg-blue' : blue,
                 'border-blue' : blue,
                 'text-lightBeige' : blue,
@@ -23,7 +23,8 @@ const Button = ({ buttonType, label, size = "sm", type }) => {
                 'text-blue' : lightOrange,
 
                 'w-full' : lg,
-            })}       
+            })}   
+            onClick={handleClick}    
         >
             {label}
         </button>

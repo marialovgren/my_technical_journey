@@ -8,6 +8,7 @@ import Projects from "../components/Projects/Projects"
 import PageContentWrapper from "../Layout/Content/PageContentWrapper"
 import Button from '../components/Button/Button'
 import Skills from '../components/Skills/Skills'
+import Intro from '../components/Intro/Intro'
 
 
 const HomePage = () => {
@@ -19,6 +20,8 @@ const HomePage = () => {
         <div className="h-full w-full">
             <PageContentWrapper>
                 <Hero />
+                <Intro />
+
                 {projectCards && <Projects 
                     projectCards={slicedProjectCards}
                     isProjectCardsLoading={isProjectCardsLoading}
