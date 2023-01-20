@@ -4,7 +4,7 @@ import Loader from '../Loader/Loader'
 import Grid from "../Grid/Grid"
 import Heading from "../Heading/Heading"
 
-const Projects = ({projectCards, isProjectCardsLoading, bgColor, borderColor}) => {
+const Projects = ({projectCards, isProjectCardsLoading, bgColor, borderColor, tagColor}) => {
     
 
     if (isProjectCardsLoading) {
@@ -41,6 +41,7 @@ const Projects = ({projectCards, isProjectCardsLoading, bgColor, borderColor}) =
                         btnTwo={repoUrl}
                         btnTwoTitle="Visit repo"
                         borderColor={borderColor}
+                        tagColor={tagColor}
                         key={id}
                     /> 
                 })}

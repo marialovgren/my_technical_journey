@@ -3,6 +3,7 @@ import { Context } from '../../context/ContextProvider'
 import Grid from '../Grid/Grid'
 import Loader from '../Loader/Loader'
 import SkillItem from './SkillItem'
+import Heading from '../Heading/Heading'
 
 const Skills = () => {
     const { skillsIcons, isSkillsLoading } = useContext(Context)
@@ -13,8 +14,13 @@ const Skills = () => {
 
     return (
         <div className="w-full mt-10">
-            <div className="flex justify-center text-blue">
-                <h2 className="text-5xl font-normal">MY <span className="font-semibold">SKILLS</span></h2>
+            <div className="flex justify-center">
+                <Heading
+                    size="1"
+                    headingColor="blue"
+                    thin="MY"
+                    bold="SKILLS"
+                />
             </div>
 
             <Grid

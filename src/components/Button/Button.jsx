@@ -9,7 +9,7 @@ const Button = ({ buttonType, label, size = "sm", type }) => {
     return (
         <button 
             type={type}
-            className={classNames("font-normal hover:font-bold py-2 border-2 px-6 transition ease-out duration-300 rounded", {
+            className={classNames("font-normal hover:font-bold py-2 border-2 px-6 transition ease-out duration-300 rounded-lg", {
                 'bg-blue' : blue,
                 'border-blue' : blue,
                 'text-lightBeige' : blue,

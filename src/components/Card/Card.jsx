@@ -1,6 +1,6 @@
 import Button from "../Button/Button"
 
-const Card = ({image, tags, title, description, btnOne, btnTwo, btnOneTitle, btnTwoTitle, borderColor, id}) => {
+const Card = ({image, tags, title, description, btnOne, btnTwo, btnOneTitle, btnTwoTitle, borderColor, tagColor, id}) => {
     
     return (
         <div key={id} className={`py-4 px-6 border-b-4 border-${borderColor}`}>
@@ -13,7 +13,7 @@ const Card = ({image, tags, title, description, btnOne, btnTwo, btnOneTitle, btn
                     return (
                         <span
                             key={i}
-                            className="p-2 rounded text-black bg-lightBeige font-normal text-sm flex align-center w-max">
+                            className={`p-2 rounded text-black bg-${tagColor} font-normal text-sm flex align-center w-max`}>
                                 {tag}
                         </span> 
                     )
