@@ -6,7 +6,6 @@ import { useNavigate } from 'react-router'
 
 /** Components **/
 import Hero from "../components/Hero/Hero"
-import Experiences from '../components/Experiences/Experiences'
 import Projects from "../components/Projects/Projects"
 import PageContentWrapper from "../Layout/Content/PageContentWrapper"
 import Button from '../components/Button/Button'
@@ -24,9 +23,7 @@ const HomePage = () => {
         <div className="h-full w-full">
             <PageContentWrapper>
                 <Hero />
-                <Experiences 
-                    bgColor="lightBeige"
-                />
+
                 <Intro />
 
                 {projectCards && <Projects 

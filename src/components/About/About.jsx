@@ -1,6 +1,8 @@
 import { useContext } from "react"
 import { Context } from "../../context/ContextProvider"
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import Loader from "../Loader/Loader"
+import Heading from "../Heading/Heading"
 
 const About = () => {
     const { about, isAboutLoading } = useContext(Context)
@@ -9,13 +11,30 @@ const About = () => {
         return <Loader />
     }
 
-    const { aboutTitle, aboutContent } = about
+    const { aboutContent, aboutImage } = about
 
     return (
-        <div>
-            <h1>{aboutTitle}</h1>
-            {/* This removes the <p> from the text on the website */}
-            <div dangerouslySetInnerHTML={{ __html: aboutContent }} /> 
+        <div className="mt-4"> 
+            <div className="flex justify-center my-6 md:my-8">
+                <Heading
+                    size="1"
+                    headingColor="blue"
+                    thin="ABOUT"
+                    bold="ME"
+                />
+            </div>
+
+            <div className="m-10">
+                <div className="w-32 md:w-56">
+                    <img 
+                    className="float-left mr-4 mb-4 md:mr-8"
+                        src={aboutImage}
+                    />
+                </div>    
+                <p className="text-blue font-normal">
+                    {documentToReactComponents(aboutContent)}
+                </p>
+            </div>
         </div>
     )
 }

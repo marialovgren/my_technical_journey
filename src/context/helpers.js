@@ -13,8 +13,9 @@ export const cleanUpAbout = (rawData) => {
     const { sys, fields } = rawData
     const {id} = sys
     const aboutTitle = fields.title
-    const aboutContent = getHTMLData(fields.description) 
-    let cleanAbout = { id, aboutTitle, aboutContent } // New object that only holds the data that I´m interested in to use
+    const aboutContent = fields.longDescription
+    const aboutImage = fields.longDescription.content[0].data.target.fields.file.url
+    let cleanAbout = { id, aboutTitle, aboutContent, aboutImage } // New object that only holds the data that I´m interested in to use
     return cleanAbout
 }
 
