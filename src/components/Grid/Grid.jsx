@@ -1,7 +1,9 @@
 
-const Grid = ({children, sm, md, lg, width, justify, gap, otherStyles}) => {
+const Grid = ({children, gap}) => {
+
+
     return (
-        <div className={`grid grid-cols-${sm} md:grid-cols-${md} lg:grid-cols-${lg} w-${width} justify-${justify} gap-${gap} ${otherStyles}`}>
+        <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full justify-center gap-${gap}`}>
             {children}
         </div>
     )

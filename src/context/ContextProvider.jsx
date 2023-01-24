@@ -1,6 +1,6 @@
 import { createContext, useCallback, useEffect, useState, } from "react";
 import { client } from "./client";
-import { cleanUpAbout, cleanUpSkillsIcons, cleanUpNavLinks, cleanUpLogo, cleanUpHero, cleanUpFooterLinks, cleanUpProjectCards, cleanUpIntro } from "./helpers";
+import { cleanUpAbout, cleanUpSkillsIcons, cleanUpNavLinks, cleanUpLogo, cleanUpHero, cleanUpFooterLinks, cleanUpProjectCards, cleanUpIntro, cleanUpExperiences } from "./helpers";
 
 export const Context = createContext({})
 
@@ -241,6 +241,37 @@ const ContextProvider = ({ children }) => {
         getIntro()
     }, [getIntro])
 
+    /** Experiences **/ 
+    const [isExperiencesLoading, setIsExperiencesLoading] = useState(false)
+    const [experiences, setExperiences] = useState([])
+    
+    const saveExperiencesData = useCallback((rawData) => {
+        const cleanExperiencesData = cleanUpExperiences(rawData)
+        setExperiences(cleanExperiencesData)
+    }, [])
+    
+    const getExperiences = useCallback(async () => {
+        setIsExperiencesLoading(true)
+        try {
+            const response = await client.getEntries({ content_type: 'experiences' })
+            console.log("Experience response", response)
+            const responseData = response.items
+            if (responseData) {
+                saveExperiencesData(responseData)
+            } else {
+                setExperiences([])
+            }
+            setIsExperiencesLoading(false)
+        } catch (err) {
+            console.log(err)
+            setIsExperiencesLoading(false)
+        }
+    }, [saveExperiencesData])
+    
+    useEffect(() => {
+        getExperiences()
+    }, [getExperiences])
+
     const contextValues = {
         about, 
         isAboutLoading, 
@@ -257,7 +288,9 @@ const ContextProvider = ({ children }) => {
         projectCards,
         isProjectCardsLoading,
         intro,
-        isIntroLoading
+        isIntroLoading,
+        experiences,
+        isExperiencesLoading
     }
 
     return (

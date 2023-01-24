@@ -16,11 +16,10 @@ const Button = ({ buttonType, label, size = "sm", type, handleClick }) => {
 
                 'bg-orange' : orange,
                 'border-orange' : orange,
-                'text-blue' : orange,
+                'text-blue' : orange || lightOrange,
 
                 'bg-lightOrange' : lightOrange,
                 'border-lightOrange' : lightOrange,
-                'text-blue' : lightOrange,
 
                 'w-full' : lg,
             })}   

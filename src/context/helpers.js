@@ -103,3 +103,18 @@ export const cleanUpIntro = (rawData) => {
     let cleanIntro = { id, introTags, introDescription } // New object that only holds the data that I´m interested in to use
     return cleanIntro
 }
+
+/** Experiences **/ 
+export const cleanUpExperiences = (rawData) => {
+    const cleanExperiences = rawData.map((experience) => {
+        const { sys, fields } = experience
+        const {id} = sys
+        const schoolTitle = fields.title
+        const schoolIcon = fields.icon.fields.file.url
+        const schoolYears = fields.years
+        const schoolMonths = fields.months
+        const updatedExperiences = { id, schoolTitle, schoolIcon, schoolYears, schoolMonths } // New object that only holds the data that I´m interested in to use
+        return updatedExperiences
+    })
+    return cleanExperiences
+}

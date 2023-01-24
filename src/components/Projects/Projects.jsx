@@ -22,13 +22,7 @@ const Projects = ({projectCards, isProjectCardsLoading, bgColor, borderColor, ta
                 />
             </div>
 
-            <Grid
-                sm="1"
-                md="2"
-                lg="3"
-                width="full"
-                justify="center"
-            >
+            <Grid>
                 {projectCards.map(project => {
                     const {id, projectTitle, projectImg, projectDescription, pageUrl, repoUrl, projectTags} = project
                     return <Card 
