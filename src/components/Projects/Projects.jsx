@@ -1,18 +1,25 @@
-import Card from "../Card/Card"
+import classNames from 'classnames'
 
+import Card from "../Card/Card"
 import Loader from '../Loader/Loader'
-import Grid from "../Grid/Grid"
+
 import Heading from "../Heading/Heading"
 
 const Projects = ({projectCards, isProjectCardsLoading, bgColor, borderColor, tagColor}) => {
+    const lightBeige = bgColor === "lightBeige"
+    const white = bgColor === "white"
     
-
     if (isProjectCardsLoading) {
         return <Loader />
     }
 
     return (
-        <div className={`bg-${bgColor}`}>
+        <div 
+            className={classNames({
+                'bg-lightBeige' : lightBeige,
+                'bg-white' : white
+            })}
+        >
             <div className="flex justify-center my-6 md:my-8">
                 <Heading
                     size="1"
@@ -22,7 +29,7 @@ const Projects = ({projectCards, isProjectCardsLoading, bgColor, borderColor, ta
                 />
             </div>
 
-            <Grid>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 justify-center ">
                 {projectCards.map(project => {
                     const {id, projectTitle, projectImg, projectDescription, pageUrl, repoUrl, projectTags} = project
                     return <Card 
@@ -39,7 +46,7 @@ const Projects = ({projectCards, isProjectCardsLoading, bgColor, borderColor, ta
                         key={id}
                     /> 
                 })}
-            </Grid>
+            </div>
         </div>
     )
 }

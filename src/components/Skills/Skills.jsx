@@ -1,11 +1,14 @@
 import { useContext } from 'react'
 import { Context } from '../../context/ContextProvider'
-import Grid from '../Grid/Grid'
+import classNames from 'classnames'
 import Loader from '../Loader/Loader'
 import SkillItem from './SkillItem'
 import Heading from '../Heading/Heading'
 
-const Skills = () => {
+const Skills = ({bgColor}) => {
+    const lightBeige = bgColor === "lightBeige"
+    const white = bgColor === "white"
+
     const { skillsIcons, isSkillsLoading } = useContext(Context)
 
     if (isSkillsLoading) {
@@ -13,7 +16,12 @@ const Skills = () => {
     }
 
     return (
-        <div className="w-full mt-10">
+        <div 
+            className={classNames("w-full pt-10", {
+                'bg-lightBeige' : lightBeige,
+                'bg-white' : white
+            })}
+        >
             <div className="flex justify-center">
                 <Heading
                     size="1"
@@ -23,13 +31,7 @@ const Skills = () => {
                 />
             </div>
 
-            <Grid
-                sm="4"
-                md="8"
-                lg="10"
-                gap="8"
-                otherStyles="mx-10 my-6 lg:mx-20"
-            >
+            <div className="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-10 gap-8 mx-10 my-6 lg:mx-20 justify-center ">
                 {skillsIcons.map((item) => {
                 const {id, skillsImg, skillsType} = item
                     return <SkillItem 
@@ -38,7 +40,7 @@ const Skills = () => {
                         skillsType={skillsType}
                     />
                 })}
-            </Grid>
+            </div>
         </div>
     )
 }

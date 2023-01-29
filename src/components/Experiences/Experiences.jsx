@@ -1,12 +1,16 @@
 /** Get data from Contentful **/
 import { useContext } from 'react'
 import { Context } from '../../context/ContextProvider'
-import Heading from '../Heading/Heading'
 
+import classNames from 'classnames'
+
+/** Components **/
 import Loader from '../Loader/Loader'
-import Grid from '../Grid/Grid'
 
 const Experiences = ({bgColor}) => {
+    const lightBeige = bgColor === "lightBeige"
+    const white = bgColor === "white"
+
     const { experiences, isExperiencesLoading } = useContext(Context)
 
     if (isExperiencesLoading) {
@@ -14,10 +18,13 @@ const Experiences = ({bgColor}) => {
     }
 
     return (
-        <div className={`bg-${bgColor} px-20`}>
-            <Grid
-                gap="2"
-            >
+        <div 
+            className={classNames("px-20", {
+                'bg-lightBeige' : lightBeige,
+                'bg-white' : white
+            })}
+        >
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 justify-center ">
                 {experiences.map((experience) => {
                     const {id, schoolTitle, schoolIcon, schoolYears, schoolMonths} = experience
                     return (
@@ -40,7 +47,7 @@ const Experiences = ({bgColor}) => {
                         </div>
                     )
                 })}
-            </Grid>
+            </div>
         </div>
     )
 }
