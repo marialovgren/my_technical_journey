@@ -1,12 +1,3 @@
-import {marked} from 'marked'
-import DOMPurify from 'dompurify'
-
-// this function formats the data that is added as longer texts so that I can style how I want the text to be formatted from Contentful
-export const getHTMLData = (rawData) => {
-    const htmlString = marked(rawData)
-    const sanitizedHTMLString = DOMPurify.sanitize(htmlString)
-    return sanitizedHTMLString
-}
 
 /** About-section **/ 
 export const cleanUpAbout = (rawData) => {
