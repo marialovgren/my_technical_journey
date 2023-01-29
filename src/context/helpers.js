@@ -58,10 +58,8 @@ export const cleanUpLogo = (rawData) => {
 export const cleanUpHero = (rawData) => {
     const { sys, fields } = rawData
     const {id} = sys
-    const heroTitle = fields.title
-    const heroSubTitle = fields.subTitle
     const heroImage = fields.image.fields.file.url 
-    let cleanHero = { id, heroTitle, heroSubTitle, heroImage } // New object that only holds the data that I´m interested in to use
+    let cleanHero = { id, heroImage } // New object that only holds the data that I´m interested in to use
     return cleanHero
 }
 
@@ -85,7 +83,7 @@ export const cleanUpProjectCards = (rawData) => {
         const {id} = sys
         const projectTitle = fields.title
         const projectImg = fields.image.fields.file.url 
-        const projectDescription = getHTMLData(fields.description) 
+        const projectDescription = fields.content
         const pageUrl = fields.pageUrl
         const repoUrl = fields.repoUrl
         const projectTags = fields.tags

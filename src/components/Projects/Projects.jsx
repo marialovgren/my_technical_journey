@@ -1,5 +1,4 @@
 import classNames from 'classnames'
-
 import Card from "../Card/Card"
 import Loader from '../Loader/Loader'
 

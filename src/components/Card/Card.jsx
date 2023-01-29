@@ -1,5 +1,6 @@
 import Button from "../Button/Button"
 import classNames from 'classnames'
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 
 const Card = ({image, tags, title, description, btnOne, btnTwo, btnOneTitle, btnTwoTitle, borderColor, tagColor, id}) => {
     const beigeTag = tagColor === "lightBeige"
@@ -33,7 +34,9 @@ const Card = ({image, tags, title, description, btnOne, btnTwo, btnOneTitle, btn
                               
             <div className="py-4">
                 <h5 className="text-blue text-xl font-medium mb-2">{title}</h5>
-                <div className="text-blue text-sm mb-4" dangerouslySetInnerHTML={{ __html: description }} /> 
+                <div className="text-blue text-sm mb-4">
+                    {documentToReactComponents(description)}
+                </div>
   
                 <div className="flex flex-row justify-around">
                     {btnOne && (

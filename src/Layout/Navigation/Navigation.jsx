@@ -1,5 +1,6 @@
 import { useContext, useState } from 'react'
 import { Context } from '../../context/ContextProvider'
+import { useNavigate } from 'react-router'
 
 /** Components **/
 import NavigationLink from './NavigationLink/NavigationLink'
@@ -8,6 +9,8 @@ import Loader from '../../components/Loader/Loader'
 const Navigation = () => {
     const [open, setOpen] = useState(false)
     const { navLinks, isNavLinksLoading, logo, isLogoLoading } = useContext(Context)
+
+    const navigate = useNavigate()
 
     if (isNavLinksLoading || isLogoLoading) {
         return <Loader />
@@ -19,7 +22,10 @@ const Navigation = () => {
                 <div className="justify-between px-3 mx-2 md:items-center md:flex md:px-8"> 
                     <div>
                         <div className="flex items-center justify-between py-2 md:py-4 md:block">
-                            <div>
+                            <div
+                                className="cursor-pointer"
+                                onClick={() => navigate('/')}
+                            >
                                 <img src={logo.img} className="h-14" />
                             </div>
 
