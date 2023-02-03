@@ -4,6 +4,7 @@ import PageContentWrapper from "../Layout/Content/PageContentWrapper"
 import About from '../components/About/About'
 import Button from '../components/Button/Button'
 import Skills from '../components/Skills/Skills'
+import CV from '../components/CV/CV'
 
 const AboutPage = () => {
     return (
@@ -17,13 +18,17 @@ const AboutPage = () => {
                             bgColor="white"
                         />
                     </div>
-                    <div className="flex justify-center align-center h-fit self-center mt-4">
-                        <a href="mailto:marialovgren86@hotmail.com" className="md:pr-8">
-                            <Button 
-                                label="Contact me"
-                                buttonType="blue"
-                            />
-                        </a>
+                    
+                </div>
+                <div className="flex flex-row justify-around md:justify-start my-6 px-20">
+                    <a href="mailto:marialovgren86@hotmail.com" className="md:pr-8">
+                        <Button 
+                            label="Contact me"
+                            buttonType="blue"
+                        />
+                    </a>
+                    <div>
+                        <CV />
                     </div>
                 </div>
 

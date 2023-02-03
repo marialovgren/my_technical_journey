@@ -11,8 +11,6 @@ import PageContentWrapper from "../Layout/Content/PageContentWrapper"
 import Button from '../components/Button/Button'
 import Skills from '../components/Skills/Skills'
 import Intro from '../components/Intro/Intro'
-import CV from '../components/CV/CV'
-
 
 const HomePage = () => {
     const { projectCards, isProjectCardsLoading } = useContext(Context)
@@ -24,9 +22,6 @@ const HomePage = () => {
         <div className="h-full w-full">
             <PageContentWrapper>
                 <Hero />
-
-                <CV />
-
                 <Intro />
 
                 {projectCards && <Projects 

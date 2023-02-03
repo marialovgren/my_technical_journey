@@ -13,16 +13,12 @@ const CV = () => {
     const { cvPDF } = cv
 
     return (
-        <div className="mt-4"> 
-            <div>
-                <a href={cvPDF} download="MyCV" target='_blank'>
-                    <Button
-                        label="Download my PDF"
-                        buttonType="blue"
-                    />
-                </a>
-            </div>
-        </div>
+        <a href={cvPDF} download="MyCV" target='_blank'>
+            <Button
+                label="Download my CV"
+                buttonType="blue"
+            />
+        </a>
     )
 }
 
