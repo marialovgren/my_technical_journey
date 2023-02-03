@@ -31,9 +31,9 @@ const About = () => {
                         src={aboutImage}
                     />
                 </div>    
-                <p className="text-blue font-normal">
+                <div className="text-blue font-normal">
                     {documentToReactComponents(aboutContent)}
-                </p>
+                </div>
             </div>
         </div>
     )
