@@ -9,7 +9,6 @@ const NavigationLink = ({children, link, setOpen}) => {
         >
             <a href={link}
                 onClick={() => setOpen(false)}
-                className={ ({ isActive }) => isActive ? activeLink : defaultLink }
             >
                 {children}
             </a>

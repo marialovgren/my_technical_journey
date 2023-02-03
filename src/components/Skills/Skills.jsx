@@ -35,7 +35,7 @@ const Skills = ({bgColor}) => {
                 {skillsIcons.map((item) => {
                 const {id, skillsImg, skillsType} = item
                     return <SkillItem 
-                        id={id}
+                        key={id}
                         skillsImg={skillsImg}
                         skillsType={skillsType}
                     />

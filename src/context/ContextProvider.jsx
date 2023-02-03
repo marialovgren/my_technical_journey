@@ -254,7 +254,6 @@ const ContextProvider = ({ children }) => {
         setIsExperiencesLoading(true)
         try {
             const response = await client.getEntries({ content_type: 'experiences' })
-            console.log("Experience response", response)
             const responseData = response.items
             if (responseData) {
                 saveExperiencesData(responseData)
@@ -285,7 +284,6 @@ const ContextProvider = ({ children }) => {
         setIsCvLoading(true)
         try {
             const response = await client.getEntry( 'rxDFiDlkO6ooEVpCL4KMu')
-            console.log("cv", response)
             if (response) {
                 saveCvData(response)
             } else {

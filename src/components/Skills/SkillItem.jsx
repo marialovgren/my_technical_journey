@@ -1,8 +1,8 @@
 
 
-const SkillItem = ({id, skillsImg, skillsType}) => {
+const SkillItem = ({skillsImg, skillsType}) => {
     return (
-        <div key={id}>
+        <div>
             <div className="flex justify-center h-20">
                 <img 
                     src={skillsImg} 
