@@ -108,3 +108,12 @@ export const cleanUpExperiences = (rawData) => {
     })
     return cleanExperiences
 }
+
+/** CV **/ 
+export const cleanUpCV = (rawData) => {
+    const { sys, fields } = rawData
+    const {id} = sys
+    const cvPDF = fields.cv.fields.file.url
+    let cleanCV = { id, cvPDF } // New object that only holds the data that I´m interested in to use
+    return cleanCV
+}

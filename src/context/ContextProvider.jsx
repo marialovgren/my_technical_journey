@@ -1,6 +1,6 @@
 import { createContext, useCallback, useEffect, useState, } from "react";
 import { client } from "./client";
-import { cleanUpAbout, cleanUpSkillsIcons, cleanUpNavLinks, cleanUpLogo, cleanUpHero, cleanUpFooterLinks, cleanUpProjectCards, cleanUpIntro, cleanUpExperiences } from "./helpers";
+import { cleanUpAbout, cleanUpSkillsIcons, cleanUpNavLinks, cleanUpLogo, cleanUpHero, cleanUpFooterLinks, cleanUpProjectCards, cleanUpIntro, cleanUpExperiences, cleanUpCV } from "./helpers";
 
 export const Context = createContext({})
 
@@ -272,6 +272,36 @@ const ContextProvider = ({ children }) => {
         getExperiences()
     }, [getExperiences])
 
+    /** CV **/ 
+    const [cv, setCv] = useState({})
+    const [isCvloading, setIsCvLoading] = useState(false)
+
+    const saveCvData = useCallback((rawData) => {
+        const cleanCvData = cleanUpCV(rawData)
+        setCv(cleanCvData)
+    }, [])
+
+    const getCv = useCallback(async () => {
+        setIsCvLoading(true)
+        try {
+            const response = await client.getEntry( 'rxDFiDlkO6ooEVpCL4KMu')
+            console.log("cv", response)
+            if (response) {
+                saveCvData(response)
+            } else {
+                setCv({})
+            }
+            setIsCvLoading(false)
+        } catch (err) {
+            console.log(err)
+            setIsCvLoading(false)
+        }
+    }, [saveCvData])
+
+    useEffect(() => {
+        getCv()
+    }, [getCv])
+
     const contextValues = {
         about, 
         isAboutLoading, 
@@ -290,7 +320,9 @@ const ContextProvider = ({ children }) => {
         intro,
         isIntroLoading,
         experiences,
-        isExperiencesLoading
+        isExperiencesLoading,
+        cv,
+        isCvloading
     }
 
     return (
