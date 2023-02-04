@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "tsc && vite build",
     "watch": "tailwindcss -i ./src/index.css -o ./src/main.css --watch",
     "preview": "vite preview",
     "setup": "node ./contentful/setup.js"
