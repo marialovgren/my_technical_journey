@@ -7,8 +7,7 @@
     "dev": "vite",
     "build": "vite build",
     "watch": "tailwindcss -i ./src/index.css -o ./src/main.css --watch",
-    "preview": "vite preview",
-    "setup": "node ./contentful/setup.js"
+    "preview": "vite preview"
   },
   "dependencies": {
     "@contentful/rich-text-react-renderer": "^15.16.2",
