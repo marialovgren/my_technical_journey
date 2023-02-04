@@ -18,7 +18,7 @@ const Intro = () => {
     const { introTags, introDescriptionPart1, introDescriptionPart2 } = intro
 
     return (
-        <div className="mx-8 my-4 flex flex-col md:flex-row">
+        <div className="mx-8 lg:mx-20 my-4 flex flex-col md:flex-row">
             <div className="flex flex-col mb-4 md:mb-0 md:bg-lightGreen md:p-6 md:rounded-br-full ">
                 {introTags && introTags.map((tag, i) => {
                     return (
@@ -31,7 +31,7 @@ const Intro = () => {
                 })}   
             </div>
     
-            <div className="mt-4 md:mx-10 lg:mx-16">
+            <div className="mt-4 md:ml-10 lg:ml-16">
                 <TextBox 
                     text={introDescriptionPart1}
                 />

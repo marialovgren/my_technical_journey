@@ -19,18 +19,22 @@ const Hero = () => {
             </div>
 
             <div className="text-blue mt-7">
-                <Heading
-                    size="2"
-                    headingColor="blue"
-                    thin="MARIA"
-                    bold="LÖVGREN"
-                />
-                <Heading
-                    size="5"
-                    headingColor="blue"
-                    thin="FRONT END DEVELOPER"
-                />
+                <div>
+                    <Heading
+                        size="1"
+                        headingColor="blue"
+                        thin="MARIA"
+                        bold="LÖVGREN"
+                    />
+                </div>
                 
+                <div className="mt-2">
+                    <Heading
+                        size="3"
+                        headingColor="blue"
+                        thin="FRONT END DEVELOPER"
+                    />
+                </div>
             </div>
         </div>
     )

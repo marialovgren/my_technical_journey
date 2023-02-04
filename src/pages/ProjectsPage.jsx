@@ -1,5 +1,5 @@
 /** Get data from Contentful **/
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
 import { Context } from '../context/ContextProvider'
 
 /** Components **/
@@ -8,6 +8,10 @@ import PageContentWrapper from "../Layout/Content/PageContentWrapper"
 
 const ProjectsPage = () => {
     const { projectCards, isProjectCardsLoading } = useContext(Context)
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
 
     return (
         <div className="h-full w-full">

@@ -28,7 +28,7 @@ const Projects = ({projectCards, isProjectCardsLoading, bgColor, borderColor, ta
                 />
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 justify-center ">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 justify-center mx-6">
                 {projectCards.map(project => {
                     const {id, projectTitle, projectImg, projectDescription, pageUrl, repoUrl, projectTags} = project
                     return <Card 

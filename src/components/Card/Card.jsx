@@ -9,7 +9,7 @@ const Card = ({image, tags, title, description, btnOne, btnTwo, btnOneTitle, btn
     const beigeBorder = borderColor === "lightBeige"
     
     return (
-        <div key={id} className={classNames("py-4 px-6 border-b-4 last-of-type:border-none", {
+        <div key={id} className={classNames("py-4 px-6 lg:px-8 border-b-4 last-of-type:border-none", {
             'border-white' : whiteBorder,
             'border-lightBeige' : beigeBorder
         })}>
@@ -17,12 +17,12 @@ const Card = ({image, tags, title, description, btnOne, btnTwo, btnOneTitle, btn
                 <img className="drop-shadow-md mb-4 w-full" src={image} alt=""/>
             </div>
                         
-            <div className="flex flex-row space-x-4">
+            <div className="flex flex-row flex-wrap">
                 {tags.map((tag, i) => {
                     return (
                         <span
                             key={i}
-                            className={classNames("p-2 rounded text-black font-normal text-sm flex align-center w-max", {
+                            className={classNames("p-2 mr-2 mb-2 rounded text-black font-normal text-sm flex align-center", {
                                 'bg-lightBeige' : beigeTag,
                                 'bg-white' : whiteTag
                             })}>
@@ -32,7 +32,7 @@ const Card = ({image, tags, title, description, btnOne, btnTwo, btnOneTitle, btn
                 })}   
             </div>
                               
-            <div className="py-4">
+            <div className="pb-4">
                 <h5 className="text-blue text-xl font-medium mb-2">{title}</h5>
                 <div className="text-blue text-sm mb-4">
                     {documentToReactComponents(description)}

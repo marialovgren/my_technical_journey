@@ -1,5 +1,5 @@
 /** Get data from Contentful **/
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
 import { Context } from '../context/ContextProvider'
 
 import { useNavigate } from 'react-router'
@@ -18,6 +18,10 @@ const HomePage = () => {
 
     const slicedProjectCards = projectCards.slice(0, 3)
 
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
+
     return (
         <div className="h-full w-full">
             <PageContentWrapper>
@@ -28,11 +32,11 @@ const HomePage = () => {
                     projectCards={slicedProjectCards}
                     isProjectCardsLoading={isProjectCardsLoading}
                     bgColor="lightBeige"
-                    borderColor="white"
+                    borderColor="lightBeige"
                     tagColor="white"
                 />}
                 <div className="flex justify-center bg-lightBeige">
-                    <div className="mx-12 my-6 w-full">
+                    <div className="mx-12 my-6 w-full md:w-80">
                         <Button
                             label="Check out all my projects"
                             buttonType="lightOrange"
