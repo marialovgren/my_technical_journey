@@ -7,6 +7,7 @@
     "dev": "vite",
     "build": "vite build",
     "watch": "tailwindcss -i ./src/index.css -o ./src/main.css",
+    "deploy": "npm build && netlify deploy --prod",
     "preview": "vite preview",
     "setup": "node ./contentful/setup.js"
   },
