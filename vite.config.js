@@ -8,6 +8,9 @@ export default ({ mode }) => {
 	  	plugins: [react()],
 		server: {
 			port: 3000,
+		},
+		build: {
+			chunkSizeWarningLimit: 1600,
 		}
     });
 }
