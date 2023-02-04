@@ -4,9 +4,10 @@ export const cleanUpAbout = (rawData) => {
     const { sys, fields } = rawData
     const {id} = sys
     const aboutTitle = fields.title
-    const aboutContent = fields.longDescription
-    const aboutImage = fields.longDescription.content[0].data.target.fields.file.url
-    let cleanAbout = { id, aboutTitle, aboutContent, aboutImage } // New object that only holds the data that I´m interested in to use
+    const aboutDescriptionPart1 = fields.descriptionPart1
+    const aboutDescriptionPart2 = fields.descriptionPart2
+    const aboutImage = fields.descriptionPart1.content[0].data.target.fields.file.url
+    let cleanAbout = { id, aboutTitle, aboutDescriptionPart1, aboutDescriptionPart2, aboutImage } // New object that only holds the data that I´m interested in to use
     return cleanAbout
 }
 
@@ -89,8 +90,9 @@ export const cleanUpIntro = (rawData) => {
     const { sys, fields } = rawData
     const {id} = sys
     const introTags = fields.tags
-    const introDescription = fields.description
-    let cleanIntro = { id, introTags, introDescription } // New object that only holds the data that I´m interested in to use
+    const introDescriptionPart1 = fields.descriptionPart1
+    const introDescriptionPart2 = fields.descriptionPart2
+    let cleanIntro = { id, introTags, introDescriptionPart1, introDescriptionPart2 } // New object that only holds the data that I´m interested in to use
     return cleanIntro
 }
 

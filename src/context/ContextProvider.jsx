@@ -18,6 +18,7 @@ const ContextProvider = ({ children }) => {
         setIsAboutLoading(true)
         try {
             const response = await client.getEntry( '5dLZMMqttuAABZ3URyjcc2')
+            console.log(response)
             if (response) {
                 saveAboutData(response)
             } else {

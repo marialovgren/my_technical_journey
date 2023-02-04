@@ -1,11 +1,11 @@
 /** Get data from Contentful **/
 import { useContext } from 'react'
 import { Context } from '../../context/ContextProvider'
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import { useNavigate } from 'react-router'
 
 import Loader from '../Loader/Loader'
 import Button from '../Button/Button'
+import TextBox from '../TextBox'
 
 const Intro = () => {
     const { intro, isIntroLoading } = useContext(Context)
@@ -15,7 +15,7 @@ const Intro = () => {
         return <Loader />
     }
 
-    const { introTags, introDescription } = intro
+    const { introTags, introDescriptionPart1, introDescriptionPart2 } = intro
 
     return (
         <div className="mx-8 my-4 flex flex-col md:flex-row">
@@ -31,10 +31,14 @@ const Intro = () => {
                 })}   
             </div>
     
-            <div className="md:mx-10 lg:mx-16">
-                <div className="text-blue font-normal">
-                    {documentToReactComponents(introDescription)}
-                </div>
+            <div className="mt-4 md:mx-10 lg:mx-16">
+                <TextBox 
+                    text={introDescriptionPart1}
+                />
+
+                <TextBox 
+                    text={introDescriptionPart2}
+                />
 
                 <div className="flex flex-row justify-around md:justify-start my-6">
                     <a href="mailto:marialovgren86@hotmail.com" className="md:pr-8">

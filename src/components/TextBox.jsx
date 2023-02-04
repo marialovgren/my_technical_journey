@@ -1,9 +1,10 @@
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 
-const TextBox = () => {
+const TextBox = ({text}) => {
 
     return (
-        <div>
-            Textbox
+        <div className="text-blue font-normal mb-4">
+            {documentToReactComponents(text)}
         </div>
     )
 }

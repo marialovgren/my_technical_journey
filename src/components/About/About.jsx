@@ -1,8 +1,8 @@
 import { useContext } from "react"
 import { Context } from "../../context/ContextProvider"
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import Loader from "../Loader/Loader"
 import Heading from "../Heading/Heading"
+import TextBox from "../TextBox"
 
 const About = () => {
     const { about, isAboutLoading } = useContext(Context)
@@ -11,7 +11,7 @@ const About = () => {
         return <Loader />
     }
 
-    const { aboutContent, aboutImage } = about
+    const { aboutDescriptionPart1, aboutDescriptionPart2, aboutImage } = about
 
     return (
         <div className="mt-4"> 
@@ -31,9 +31,15 @@ const About = () => {
                         src={aboutImage}
                     />
                 </div>    
-                <div className="text-blue font-normal">
-                    {documentToReactComponents(aboutContent)}
-                </div>
+
+                <TextBox 
+                    text={aboutDescriptionPart1}
+                />
+
+                <TextBox 
+                    text={aboutDescriptionPart2}
+                />
+
             </div>
         </div>
     )
