@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router'
 
 import Loader from '../Loader/Loader'
 import Button from '../Button/Button'
-import TextBox from '../TextBox'
+import TextBox from '../Textbox/TextBox'
 
 const Intro = () => {
     const { intro, isIntroLoading } = useContext(Context)

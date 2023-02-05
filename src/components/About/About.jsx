@@ -2,7 +2,7 @@ import { useContext } from "react"
 import { Context } from "../../context/ContextProvider"
 import Loader from "../Loader/Loader"
 import Heading from "../Heading/Heading"
-import TextBox from "../TextBox"
+import TextBox from "../Textbox/TextBox"
 
 const About = () => {
     const { about, isAboutLoading } = useContext(Context)
